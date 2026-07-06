@@ -13,7 +13,20 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // I'm not sure what to comment, this is fairly straightforward.
+        //  Initial thoughts: "is it from 0? or from 1?"
+        //  Failed tests, found to start i at 1 rather than 0.
+        // You are making a list of multiples, so multiply the number by
+        //  an incremented count and return that list as an array, storing
+        //  the results in a List.
+        List<double> multipleList = new List<double>();
+
+        for (int i = 1; i <= length; i++)
+        {
+            multipleList.Add(i * number);
+        }
+
+        return multipleList.ToArray(); // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +42,17 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // Not sure what to comment, pretty straight forward.
+        // I think Modulo would be a good use if this was a Right & Left function,
+        //  not sure if C# supports that kind of syntax hack like py GetRange(data.Count % amount).
+        //                                                           --> it doesnt.
+        // Since it's only rotating right, get the rightmost number range and then insert at pos0.
+        //   `amount' is the amount of numbers to get from the rightmost side, subtract the count
+        //   of the list by the amount to get the range of numbers rotated in GetRange.
+        // GetRange creates a shallow copy, we don't have to create a variable for that, insert
+        //   it in the InsertRange method and remove the amount of numbers from the rightmost side.
+        data.InsertRange(0, data.GetRange(data.Count - amount, amount));
+        data.RemoveRange(data.Count - amount, amount);
     }
 }

@@ -19,14 +19,14 @@ public static class Arrays
         // You are making a list of multiples, so multiply the number by
         //  an incremented count and return that list as an array, storing
         //  the results in a List.
-        List<double> multipleList = new List<double>();
+        var multipleList = new double[length];
 
         for (int i = 1; i <= length; i++)
         {
-            multipleList.Add(i * number);
+            multipleList[i - 1] = i * number;
         }
 
-        return multipleList.ToArray(); // replace this return statement with your own
+        return multipleList; // replace this return statement with your own
     }
 
     /// <summary>
